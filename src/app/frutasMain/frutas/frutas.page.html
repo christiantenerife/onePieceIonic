@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Frutas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page">
+    <h1 class="page-title">Frutas</h1>
+    <p class="page-subtitle">Descubre las Frutas de OnePiece</p>
+  </div>
+
+  @if (loading) {
+    <p class="status-message">Cargando frutas...</p>
+  }
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  @if (!loading && apiFrutas.length > 0) {
+    <div class="card-grid">
+      @for (fruta of apiFrutas; track fruta.id) {
+        <div class="card" [routerLink]="['/tabs/frutas', fruta.id]">
+
+          <img
+            [src]="fruta.filename"
+            [alt]="fruta.name"
+            class="fruta-img"
+          />
+
+          <h3>{{ fruta.name }}</h3>
+
+        </div>
+      }
+    </div>
+  }
+</ion-content>

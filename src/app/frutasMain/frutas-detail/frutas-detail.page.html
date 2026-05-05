@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/sagas"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Detalle Saga</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (fruta$ | async; as fruta) {
+
+    <div class="card--fruta-detail">
+      <h1>{{ fruta.name }}</h1>
+
+      <p><strong>Nombre romano:</strong> {{ fruta.roman_name }}</p>
+      <p><strong>Tipo:</strong> {{ fruta.type }}</p>
+      <p><strong>Descripción:</strong> {{ fruta.description }}</p>
+
+      <img
+        [src]="fruta.filename"
+        alt="{{ fruta.name }}"
+        class="fruta-image"
+      />
+
+    </div>
+
+  }
+</ion-content>
