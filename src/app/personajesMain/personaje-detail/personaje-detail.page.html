@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/personajes"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Detalle Personaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (personaje$ | async; as personaje) {
+
+    <div class="card--personaje-detail">
+      <h1>{{ personaje.name }}</h1>
+
+    <p><strong>Número del personaje:</strong> {{ personaje.id }}</p>
+    <p><strong>Rol:</strong> {{ personaje.job }}</p>
+    <p><strong>Recompensa:</strong> {{ personaje.bounty }}</p>
+    <p><strong>Fecha de nacimiento:</strong> {{ personaje.birthday || 'No se conoce' }}</p>
+    <p><strong>Edad:</strong> {{ personaje.age.replace('ans', 'años') || 'No se conoce' }}</p>
+    <p><strong>Tripulación:</strong> {{ personaje.crew?.name || 'No se conoce' }}</p>
+    <p><strong>Fruta:</strong> {{ personaje.fruit?.name || 'No tiene' }}</p>
+
+  </div>
+    
+
+  }
+</ion-content>

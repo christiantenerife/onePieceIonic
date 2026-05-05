@@ -23,11 +23,9 @@
       @for (fruta of apiFrutas; track fruta.id) {
         <div class="card" [routerLink]="['/tabs/frutas', fruta.id]">
 
-          <img
-            [src]="fruta.filename"
-            [alt]="fruta.name"
-            class="fruta-img"
-          />
+          
+          <img [src]="fruta.filename || '../assets/placeholder.jpg'" [alt]="fruta.name" 
+          (error)="$any($event.target).src='../assets/placeholder.jpg'">
 
           <h3>{{ fruta.name }}</h3>
 

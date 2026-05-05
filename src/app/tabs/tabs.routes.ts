@@ -29,7 +29,12 @@ export const routes: Routes = [
       {
         path: 'personajes',
         loadComponent: () =>
-          import('../personajes/personajes.page').then((m) => m.PersonajesPage),
+          import('../personajesMain/personajes/personajes.page').then((m) => m.PersonajesPage),
+      },
+      {
+        path: 'personajes/:id',
+        loadComponent: () =>
+          import('../personajesMain/personaje-detail/personaje-detail.page').then((m) => m.PersonajeDetailPage),
       },
       {
         path: '',
@@ -41,11 +46,16 @@ export const routes: Routes = [
         redirectTo: '/tabs/frutas',
         pathMatch: 'full',
       },
+      {
+        path: '',
+        redirectTo: '/tabs/personajes',
+        pathMatch: 'full',
+      },
     ],
     
   },
   {
-        path: '',
+        path: '', // opens on frutas
         redirectTo: '/tabs/frutas',
         pathMatch: 'full',
       },

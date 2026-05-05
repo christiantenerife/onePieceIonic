@@ -10,21 +10,25 @@
 
 <ion-content class="ion-padding">
   @if (fruta$ | async; as fruta) {
+    <div class="detail-card">
 
-    <div class="card--fruta-detail">
-      <h1>{{ fruta.name }}</h1>
+     
+        <img [src]="fruta.filename || '../assets/placeholder.jpg'" [alt]="fruta.name" 
+          (error)="$any($event.target).src='../assets/placeholder.jpg'">
+      
 
-      <p><strong>Nombre romano:</strong> {{ fruta.roman_name }}</p>
-      <p><strong>Tipo:</strong> {{ fruta.type }}</p>
-      <p><strong>Descripción:</strong> {{ fruta.description }}</p>
+      <div class="detail-info">
+        <h1>{{ fruta.name }}</h1>
 
-      <img
-        [src]="fruta.filename"
-        alt="{{ fruta.name }}"
-        class="fruta-image"
-      />
+        <p class="roman-name">{{ fruta.roman_name }}</p>
+
+        <span class="type-badge">{{ fruta.type }}</span>
+
+        <p class="description">
+          {{ fruta.description }}
+        </p>
+      </div>
 
     </div>
-
   }
 </ion-content>

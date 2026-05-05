@@ -58,8 +58,8 @@ html, body {
 }
 
 
-ion-text{
-  font-family: 'Bangers', bold;
+body {
+  font-family: 'Bangers', cursive;
 }
 
 ion-content {
@@ -77,7 +77,14 @@ ion-content {
 .page-title {
   font-size: 2.5rem;
   color: #111827;
+  font-family: 'Bangers', cursive;
 }
+
+.page-subtitle {
+  font-family: 'Bangers', cursive;
+  color: #555;
+}
+
 
 .card {
   background: white;
@@ -85,6 +92,7 @@ ion-content {
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Bangers', cursive;
 }
 
 .card:hover {

@@ -1,22 +1,22 @@
 import { Component, inject } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/angular/standalone';
-import { SagasService } from '../../core/services/sagas.service';
-import { Saga } from '../../core/models/saga.model';
+import { PersonajesService } from '../../core/services/personajes.service';
+import { Personaje } from '../../core/models/personaje.model';
 import { ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-SagasPage',
-  templateUrl: 'sagas.page.html',
-  styleUrls: ['sagas.page.scss'],
+  selector: 'app-PersonajesPage',
+  templateUrl: 'personajes.page.html',
+  styleUrls: ['personajes.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink],
   standalone: true,
 })
-export class SagasPage {
-  private sagasService = inject(SagasService);
+export class PersonajesPage {
+  private personajesService = inject(PersonajesService);
   private cdr = inject(ChangeDetectorRef);
 
-  apiSagas: Saga[] = [];
+  apiPersonajes: Personaje[] = [];
   loading = true;
   error = '' 
 
@@ -27,26 +27,26 @@ export class SagasPage {
 }
 
   ngOnInit(): void {
-    this.loadSagas();
+    this.loadPersonajes();
   }
 
-loadSagas(): void {
-  console.log('Component loadSagas called');
+loadPersonajes(): void {
+  console.log('Component loadPersonajes called');
 
   this.loading = true;
   this.error = '';
 
-  this.sagasService.getSagas().subscribe({
-    next: (data: Saga[]) => {
+  this.personajesService.getPersonajes().subscribe({
+    next: (data: Personaje[]) => {
       console.log('Component NEXT', data.length);
-      this.apiSagas = data;
+      this.apiPersonajes = data;
       this.loading = false;
       this.cdr.detectChanges();
-      console.log('loading:', this.loading, 'count:', this.apiSagas.length);
+      console.log('loading:', this.loading, 'count:', this.apiPersonajes.length);
     },
     error: (err) => {
       console.log('Component ERROR', err);
-      this.error = 'No se pudieron cargar las sagas.';
+      this.error = 'No se pudieron cargar los personajes.';
       this.loading = false;
     },
     complete: () => {
@@ -55,6 +55,3 @@ loadSagas(): void {
   });
 }
 }
-
-
-
