@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-tab2',
+  selector: 'app-FrutasPage',
   templateUrl: 'frutas.page.html',
   styleUrls: ['frutas.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent],
   standalone: true,
 })
-export class Tab2Page {
+export class FrutasPage {
 
   constructor() {}
 

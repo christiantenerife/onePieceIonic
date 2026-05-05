@@ -3,12 +3,12 @@ import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/stan
 
 
 @Component({
-  selector: 'app-tab3',
+  selector: 'app-PersonajesPage',
   templateUrl: 'personajes.page.html',
   styleUrls: ['personajes.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent],
   standalone: true,
 })
-export class Tab3Page {
+export class PersonajesPage {
   constructor() {}
 }

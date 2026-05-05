@@ -7,31 +7,35 @@ export const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'sagas',
         loadComponent: () =>
-          import('../sagas/sagas.page').then((m) => m.Tab1Page),
+          import('../SagasMain/sagas/sagas.page').then((m) => m.SagasPage),
       },
       {
-        path: 'tab2',
+        path: 'sagas/:id',
         loadComponent: () =>
-          import('../frutas/frutas.page').then((m) => m.Tab2Page),
+          import('../SagasMain/saga-detail/saga-detail.page').then((m) => m.SagaDetailPage),
       },
       {
-        path: 'tab3',
+        path: 'frutas',
         loadComponent: () =>
-          import('../personajes/personajes.page').then((m) => m.Tab3Page),
+          import('../frutas/frutas.page').then((m) => m.FrutasPage),
       },
-     
+      {
+        path: 'personajes',
+        loadComponent: () =>
+          import('../personajes/personajes.page').then((m) => m.PersonajesPage),
+      },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/sagas',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/sagas',
     pathMatch: 'full',
   },
 ];

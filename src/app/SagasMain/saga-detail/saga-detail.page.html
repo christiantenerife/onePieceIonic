@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/sagas"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Detalle Saga</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (saga$ | async; as saga) {
+
+    <div class="card--saga-detail">
+      <h1>{{ saga.title }}</h1>
+
+      <p><strong>Número de la Saga:</strong> {{ saga.saga_number }}</p>
+      <p><strong>Capítulos:</strong> {{ cleanText(saga.saga_chapitre) }}</p>
+      <p><strong>Volúmenes:</strong> {{ cleanText(saga.saga_volume) }}</p>
+      <p><strong>Episodios:</strong> {{ cleanText(saga.saga_episode) }}</p>
+    </div>
+
+  }
+</ion-content>

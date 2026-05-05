@@ -1,18 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/angular/standalone';
-import { SagasService } from '../core/services/sagas.service';
-import { Saga } from '../core/models/saga.model';
+import { SagasService } from '../../core/services/sagas.service';
+import { Saga } from '../../core/models/saga.model';
 import { ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-tab1',
+  selector: 'app-SagasPage',
   templateUrl: 'sagas.page.html',
   styleUrls: ['sagas.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink],
   standalone: true,
 })
-export class Tab1Page {
+export class SagasPage {
   private sagasService = inject(SagasService);
   private cdr = inject(ChangeDetectorRef);
 

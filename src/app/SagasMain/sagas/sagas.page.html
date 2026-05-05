@@ -23,16 +23,13 @@
 
  @if (!loading && apiSagas.length > 0) {
   <div class="card-grid">
-    @for (saga of apiSagas; track $index) {
-      <div class="card" [routerLink]="['/sagas', saga.id]">
+
+    @for (saga of apiSagas; track saga.id) {
+      <div class="card" [routerLink]="['/tabs/sagas', saga.id]">
         <h3>{{ saga.title }}</h3>
-        <!-- <p><strong>Número de la Saga:</strong> {{ saga.saga_number }}</p>
-        <p><strong>Capítulos de la Saga:</strong> {{ cleanText(saga.saga_chapitre) }}</p>
-        <p><strong>Volumen de la Saga:</strong> {{ cleanText(saga.saga_volume) }}</p>
-        <p><strong>Episodios de la Saga:</strong> {{ cleanText(saga.saga_episode) }}</p> -->
       </div>
     }
+
   </div>
 }
-
 </ion-content>
