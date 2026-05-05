@@ -1,0 +1,12 @@
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: fit-content;
+  min-width: unset;
+  padding: 20px 28px;
+}
