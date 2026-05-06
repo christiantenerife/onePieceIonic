@@ -10,7 +10,7 @@ import { Personaje } from '../models/personaje.model';
 export class PersonajesService {
   private api = inject(ApiService);
 
- getPersonajes(): Observable<Personaje[]> {
+  getPersonajes(): Observable<Personaje[]> {
     console.log('Requesting personajes from API');
 
     return this.api.get<Personaje[]>('/characters/en').pipe(
@@ -20,5 +20,9 @@ export class PersonajesService {
         complete: () => console.log('Service COMPLETE')
       })
     );
+  }
+
+  searchCharacters(term: string): Observable<Personaje[]> {
+    return this.api.get<Personaje[]>(`/characters/en?search=${term}`);
   }
 }

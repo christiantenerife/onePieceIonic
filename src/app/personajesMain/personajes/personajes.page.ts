@@ -1,16 +1,46 @@
 import { Component, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/angular/standalone';
+import { CommonModule } from '@angular/common';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonGrid,
+  IonText,
+  IonCard,
+  IonRow,
+  IonCol,
+  IonCardHeader,
+  IonCardTitle,
+  IonSearchbar,
+} from '@ionic/angular/standalone';
+
+import { RouterLink } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 import { PersonajesService } from '../../core/services/personajes.service';
 import { Personaje } from '../../core/models/personaje.model';
-import { ChangeDetectorRef } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-PersonajesPage',
   templateUrl: 'personajes.page.html',
   styleUrls: ['personajes.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink],
   standalone: true,
+  imports: [
+    CommonModule,
+    RouterLink,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonText,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonSearchbar,
+  ],
 })
 export class PersonajesPage {
   private personajesService = inject(PersonajesService);
@@ -18,40 +48,46 @@ export class PersonajesPage {
 
   apiPersonajes: Personaje[] = [];
   loading = true;
-  error = '' 
+  error = '';
 
-  constructor() {}
+  searchTerm = '';
 
-  cleanText(value: string | number | null | undefined): string {
+ngOnInit(): void {
+  this.loadPersonajes();
+}
+
+onSearch(event: any): void {
+  this.searchTerm = event.detail.value?.toLowerCase().trim() || '';
+}
+
+get filteredPersonajes(): Personaje[] {
+  if (!this.searchTerm) {
+    return this.apiPersonajes;
+  }
+
+  return this.apiPersonajes.filter(personaje =>
+    personaje.name?.toLowerCase().includes(this.searchTerm)
+  );
+}
+
+cleanText(value: string | number | null | undefined): string {
   return String(value ?? '').replace(/à/gi, 'a');
 }
 
-  ngOnInit(): void {
-    this.loadPersonajes();
+  loadPersonajes(): void {
+    this.loading = true;
+    this.error = '';
+
+    this.personajesService.getPersonajes().subscribe({
+      next: (data: Personaje[]) => {
+        this.apiPersonajes = data;
+        this.loading = false;
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.error = 'No se pudieron cargar los personajes.';
+        this.loading = false;
+      }
+    });
   }
-
-loadPersonajes(): void {
-  console.log('Component loadPersonajes called');
-
-  this.loading = true;
-  this.error = '';
-
-  this.personajesService.getPersonajes().subscribe({
-    next: (data: Personaje[]) => {
-      console.log('Component NEXT', data.length);
-      this.apiPersonajes = data;
-      this.loading = false;
-      this.cdr.detectChanges();
-      console.log('loading:', this.loading, 'count:', this.apiPersonajes.length);
-    },
-    error: (err) => {
-      console.log('Component ERROR', err);
-      this.error = 'No se pudieron cargar los personajes.';
-      this.loading = false;
-    },
-    complete: () => {
-      console.log('Component COMPLETE');
-    }
-  });
-}
 }

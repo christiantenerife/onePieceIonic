@@ -1,18 +1,24 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable, map, switchMap, tap } from 'rxjs';
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
   IonButtons,
-  IonBackButton
+  IonBackButton,
+  IonIcon,
+  IonCard,
 } from '@ionic/angular/standalone';
+
+import { addIcons } from 'ionicons';
+import { heart, heartOutline, arrowBack } from 'ionicons/icons';
 
 import { PersonajesService } from '../../core/services/personajes.service';
 import { Personaje } from '../../core/models/personaje.model';
+import { FavoritesService } from '../../core/services/favorites.service';
 
 @Component({
   selector: 'app-personaje-detail',
@@ -25,26 +31,41 @@ import { Personaje } from '../../core/models/personaje.model';
     IonToolbar,
     IonTitle,
     IonContent,
+    IonBackButton,
     IonButtons,
-    IonBackButton
+    IonIcon,
+    IonCard,
   ],
 })
 export class PersonajeDetailPage {
   personaje$: Observable<Personaje | undefined>;
+  isFavorite = false;
 
   constructor(
     public personajesService: PersonajesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private favoritesService: FavoritesService
   ) {
+    addIcons({ heart, heartOutline, arrowBack });
+
     this.personaje$ = this.route.paramMap.pipe(
       switchMap(params => {
         const id = Number(params.get('id'));
 
         return this.personajesService.getPersonajes().pipe(
-          map(personajes => personajes.find(personaje => personaje.id === id))
+          map(personajes => personajes.find(personaje => personaje.id === id)),
+          tap(personaje => {
+            if (personaje?.id) {
+              this.isFavorite = this.favoritesService.isFavorite('personaje', personaje.id);
+            }
+          })
         );
       })
     );
+  }
+
+  toggleFavorite(personaje: Personaje) {
+    this.isFavorite = this.favoritesService.toggleFavorite('personaje', personaje.id);
   }
 
   cleanText(value: string | number | null | undefined): string {

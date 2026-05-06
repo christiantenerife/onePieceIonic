@@ -1,5 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/angular/standalone';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonGrid,
+  IonText,
+  IonCard,
+  IonRow,
+  IonCol,
+  IonCardHeader,
+  IonCardTitle,
+} from '@ionic/angular/standalone';
 import { FrutasService } from '../../core/services/frutas.service';
 import { Fruta } from '../../core/models/fruta.model';
 import { ChangeDetectorRef } from '@angular/core';
@@ -9,7 +21,20 @@ import { RouterLink } from '@angular/router';
   selector: 'app-FrutasPage',
   templateUrl: 'frutas.page.html',
   styleUrls: ['frutas.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink],
+  imports: [IonHeader, 
+    IonToolbar, 
+    IonTitle, 
+    IonContent, 
+    IonCard, 
+    RouterLink,
+    IonText,
+    IonGrid,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCol,
+    IonRow  
+  ],
   standalone: true,
 })
 export class FrutasPage {

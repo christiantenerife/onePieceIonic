@@ -4,33 +4,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="page">
+<ion-content class="ion-padding">
+
+  <ion-text class="page">
     <h1 class="page-title">Frutas</h1>
     <p class="page-subtitle">Descubre las Frutas de OnePiece</p>
-  </div>
+  </ion-text>
 
   @if (loading) {
-    <p class="status-message">Cargando frutas...</p>
+    <ion-text>
+      <p class="status-message">Cargando frutas...</p>
+    </ion-text>
   }
 
   @if (error) {
-    <p class="error">{{ error }}</p>
+    <ion-text color="danger">
+      <p class="error">{{ error }}</p>
+    </ion-text>
   }
 
   @if (!loading && apiFrutas.length > 0) {
-    <div class="card-grid">
-      @for (fruta of apiFrutas; track fruta.id) {
-        <div class="card" [routerLink]="['/tabs/frutas', fruta.id]">
+    <ion-grid class="card-grid">
+      <ion-row>
+        @for (fruta of apiFrutas; track fruta.id) {
+          <ion-col size="6">
+            <ion-card class="card" [routerLink]="['/tabs/frutas', fruta.id]">
 
-          
-          <img [src]="fruta.filename || '../assets/placeholder.jpg'" [alt]="fruta.name" 
-          (error)="$any($event.target).src='../assets/placeholder.jpg'">
+              <img  
+                class="fruit-image"  
+                [src]="fruta.filename || '../assets/placeholder.jpg'"
+                [alt]="fruta.name"
+                (error)="$any($event.target).src='../assets/placeholder.jpg'"> 
+              <ion-card-header>
+                <ion-card-title>{{ fruta.name }}</ion-card-title>
+              </ion-card-header>
 
-          <h3>{{ fruta.name }}</h3>
-
-        </div>
-      }
-    </div>
+            </ion-card>
+          </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
   }
+
 </ion-content>

@@ -1,34 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/sagas"></ion-back-button>
-    </ion-buttons>
-
-    <ion-title>Detalle Saga</ion-title>
+    <ion-title>Detalle Fruta</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   @if (fruta$ | async; as fruta) {
-    <div class="detail-card">
+    <ion-card class="card--fruta-detail">
 
-     
-        <img [src]="fruta.filename || '../assets/placeholder.jpg'" [alt]="fruta.name" 
-          (error)="$any($event.target).src='../assets/placeholder.jpg'">
-      
+      <ion-back-button
+      defaultHref="/tabs/frutas"
+      text=""
+       icon="arrow-back">
+      </ion-back-button>
 
-      <div class="detail-info">
-        <h1>{{ fruta.name }}</h1>
+      <ion-buttons class="favorite-button" fill="clear" (click)="toggleFavorite(fruta)">
+  <ion-icon
+    slot="icon-only"
+    size="large"
+    [name]="isFavorite ? 'heart' : 'heart-outline'"
+    [color]="isFavorite ? 'danger' : 'dark'">
+  </ion-icon>
+</ion-buttons>
 
-        <p class="roman-name">{{ fruta.roman_name }}</p>
+      <h1 class="fruta-title">{{ fruta.name }}</h1>
+    <img [src]="fruta.filename || '../assets/placeholder.jpg'" [alt]="fruta.name" class="fruit-image"
+          (error)="$any($event.target).src='../assets/placeholder.jpg'">// ionic no tiene un componente de imagen, así que usamos una etiqueta img normal con manejo de error para mostrar un placeholder
+      <p class="description"> {{ fruta.description }}</p> 
 
-        <span class="type-badge">{{ fruta.type }}</span>
-
-        <p class="description">
-          {{ fruta.description }}
-        </p>
-      </div>
-
-    </div>
+    </ion-card>
   }
 </ion-content>
+
+

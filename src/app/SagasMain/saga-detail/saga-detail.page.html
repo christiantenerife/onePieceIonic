@@ -1,24 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/sagas"></ion-back-button>
-    </ion-buttons>
-
     <ion-title>Detalle Saga</ion-title>
-  </ion-toolbar>
+      </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   @if (saga$ | async; as saga) {
+  <ion-card class="card--saga-detail">
 
-    <div class="card--saga-detail">
-      <h1>{{ saga.title }}</h1>
+  <ion-back-button
+    defaultHref="/tabs/sagas"
+    text=""
+    icon="arrow-back">
+  </ion-back-button>
 
-      <p><strong>Número de la Saga:</strong> {{ saga.saga_number }}</p>
-      <p><strong>Capítulos:</strong> {{ cleanText(saga.saga_chapitre) }}</p>
-      <p><strong>Volúmenes:</strong> {{ cleanText(saga.saga_volume) }}</p>
-      <p><strong>Episodios:</strong> {{ cleanText(saga.saga_episode) }}</p>
-    </div>
+  <ion-button
+    fill="clear"
+    class="favorite-button"
+    (click)="toggleFavorite(saga)">
 
+    <ion-icon
+      slot="icon-only"
+      size="large"
+      [name]="isFavorite ? 'heart' : 'heart-outline'"
+      [color]="isFavorite ? 'danger' : 'dark'">
+    </ion-icon>
+
+  </ion-button>
+
+  <h1 class="saga-title">{{ saga.title }}</h1>
+
+  <p><strong>Número de la Saga:</strong> {{ saga.saga_number }}</p>
+  <p><strong>Capítulos:</strong> {{ cleanText(saga.saga_chapitre) }}</p>
+  <p><strong>Volúmenes:</strong> {{ cleanText(saga.saga_volume) }}</p>
+  <p><strong>Episodios:</strong> {{ cleanText(saga.saga_episode) }}</p>
+
+</ion-card>
   }
 </ion-content>

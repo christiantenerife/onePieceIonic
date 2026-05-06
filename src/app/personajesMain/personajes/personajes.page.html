@@ -4,33 +4,48 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="page">
+<ion-content class="ion-padding">
+
+ <ion-searchbar
+  class="search-bar"
+  placeholder="Buscar personaje"
+  (ionInput)="onSearch($event)">
+</ion-searchbar>
+
+  <ion-text class="page">
     <h1 class="page-title">Personajes</h1>
+    <p class="page-subtitle">Descubre los Personajes de OnePiece</p>
+  </ion-text>
 
-    <p class="page-subtitle">
-      Descubre los Personajes de OnePiece
-    </p>
-  </div>
-
-   @if (loading) {
-    <p class="status-message">Cargando personajes...</p>
+  @if (loading) {
+    <ion-text>
+      <p class="status-message">Cargando personajes...</p>
+    </ion-text>
   }
 
   @if (error) {
-    <p class="error">{{ error }}</p>
+    <ion-text color="danger">
+      <p class="error">{{ error }}</p>
+    </ion-text>
   }
 
- @if (!loading && apiPersonajes.length > 0) {
-  <div class="card-grid">
+  @if (!loading && apiPersonajes.length > 0) {
+    <ion-grid class="card-grid">
+      <ion-row>
+        @for (personaje of filteredPersonajes; track personaje.id) {
+          <ion-col size="6">
+            <ion-card class="card" [routerLink]="['/tabs/personajes', personaje.id]">
 
-    @for (personaje of apiPersonajes; track personaje.id) {
-      <div class="card" [routerLink]="['/tabs/personajes', personaje.id]">
-        <h3>{{ personaje.name }}</h3>
-      </div>
-    }
+              <ion-card-header>
+                <ion-card-title>{{ personaje.name }}</ion-card-title>
+              </ion-card-header>
 
-  </div>
-}
+            </ion-card>
+          </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+  }
+
 </ion-content>
 

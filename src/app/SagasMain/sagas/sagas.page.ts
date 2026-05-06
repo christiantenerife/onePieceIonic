@@ -1,5 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/angular/standalone';
+import { IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonGrid,
+  IonText,
+  IonCard,
+  IonRow,
+  IonCol,
+  IonCardHeader,
+  IonCardTitle,} from '@ionic/angular/standalone';
 import { SagasService } from '../../core/services/sagas.service';
 import { Saga } from '../../core/models/saga.model';
 import { ChangeDetectorRef } from '@angular/core';
@@ -9,7 +19,19 @@ import { RouterLink } from '@angular/router';
   selector: 'app-SagasPage',
   templateUrl: 'sagas.page.html',
   styleUrls: ['sagas.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink],
+  imports: [IonToolbar, 
+    IonTitle, 
+    IonContent, 
+    IonCard, 
+    IonHeader,
+    RouterLink,
+    IonText,
+    IonGrid,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCol,
+    IonRow ],
   standalone: true,
 })
 export class SagasPage {
