@@ -1,8 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Detalle Saga</ion-title>
-      </ion-toolbar>
-</ion-header>
+<ion-toolbar class="logo-toolbar">
+
+  <ion-title>
+    <img
+      src="assets/onePiece.jpg"
+      class="logo"
+      alt="One Piece Logo"
+       [routerLink]="['/home']">
+  </ion-title>
+
+  <ion-buttons slot="end">
+    <ion-button
+      class="info-button"
+      fill="solid"
+      size="small"
+      shape = "round"
+      color="primary"
+      [routerLink]="['/info']">
+      Ver mi información
+    </ion-button>
+  </ion-buttons>
+
+</ion-toolbar>
+  </ion-header>
 
 <ion-content class="ion-padding">
   @if (saga$ | async; as saga) {

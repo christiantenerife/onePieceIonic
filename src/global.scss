@@ -42,6 +42,9 @@ html, body {
   overflow-x: hidden;
 }
 
+
+
+
 .logo-toolbar {
   --background: #f4e7c5;
   text-align: center;
@@ -63,7 +66,17 @@ body {
 }
 
 ion-content {
-  --background: #f4e7c5;
+  --background: transparent;
+}
+
+ion-content::part(background) {
+  background:
+    linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)),
+    url('/assets/background.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .page {
@@ -87,7 +100,8 @@ ion-content {
 
 
 .card {
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
   padding: 24px;
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);

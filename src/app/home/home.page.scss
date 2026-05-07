@@ -1,0 +1,46 @@
+.home-content::part(background) {
+  background:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    url('/assets/background.jpg');
+
+  background-size: cover;
+  background-position: center;
+}
+
+.hero {
+  min-height: 100%;
+  padding: 80px 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: white;
+}
+
+.home-logo {
+  width: 280px;
+  max-width: 90%;
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+ion-button {
+  --background: #2563eb;
+  --color: white;
+  --border-radius: 14px;
+
+  font-weight: 600;
+}

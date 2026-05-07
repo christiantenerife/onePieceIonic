@@ -1,0 +1,44 @@
+<ion-header>
+<ion-toolbar class="logo-toolbar">
+
+  <ion-title>
+    <img
+      src="assets/onePiece.jpg"
+      class="logo"
+      alt="One Piece Logo"
+       [routerLink]="['/home']">
+  </ion-title>
+
+  <ion-buttons slot="end">
+    <ion-button
+      class="info-button"
+      fill="solid"
+      size="small"
+      shape = "round"
+      color="primary"
+      [routerLink]="['/info']">
+      Ver mi información
+    </ion-button>
+  </ion-buttons>
+
+</ion-toolbar>
+  </ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-title>Mi información</ion-title>
+  
+  <h2>Christian Moore</h2>
+  <p>
+    Soy estudiante de DAM (FPGS) y este proyecto en Ionic muestra sagas, personajes y frutas de One Piece
+    usando una API.
+
+    <ion-buttons slot="start">
+  <ion-back-button
+    defaultHref="/tabs/tab1"
+    text=""
+    color="primary">
+  </ion-back-button>
+</ion-buttons>
+  </p>
+</ion-content>

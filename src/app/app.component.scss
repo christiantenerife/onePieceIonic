@@ -1,0 +1,29 @@
+.logo-toolbar {
+  --background: #e8dfc5;
+  --min-height: 110px;
+}
+
+ion-title {
+  text-align: center;
+}
+
+.logo {
+  height: 80px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.info-button {
+  --background: #2563eb;
+  --background-hover: #1d4ed8;
+  --color: white;
+  --border-radius: 12px;
+
+  margin-right: 20px;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  min-height: 42px;
+}

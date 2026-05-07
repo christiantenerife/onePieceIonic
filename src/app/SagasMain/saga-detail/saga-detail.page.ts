@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Observable, map, switchMap, tap } from 'rxjs';
 import {
   IonHeader,
@@ -11,6 +12,7 @@ import {
   IonIcon,
   IonCard,
   IonButton,
+  IonButtons,
 } from '@ionic/angular/standalone';
 
 import { SagasService } from '../../core/services/sagas.service';
@@ -33,6 +35,8 @@ import { heart, heartOutline, arrowBack } from 'ionicons/icons';
   IonIcon,
   IonCard,
   IonButton,
+  IonButtons,
+  RouterLink
   ],
 })
 export class SagaDetailPage {

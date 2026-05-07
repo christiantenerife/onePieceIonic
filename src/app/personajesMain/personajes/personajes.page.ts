@@ -13,6 +13,7 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonSearchbar,
+  IonButtons
 } from '@ionic/angular/standalone';
 
 import { RouterLink } from '@angular/router';
@@ -40,6 +41,7 @@ import { Personaje } from '../../core/models/personaje.model';
     IonCardHeader,
     IonCardTitle,
     IonSearchbar,
+    IonButtons
   ],
 })
 export class PersonajesPage {

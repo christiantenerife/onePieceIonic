@@ -9,7 +9,8 @@ import { IonHeader,
   IonRow,
   IonCol,
   IonCardHeader,
-  IonCardTitle,} from '@ionic/angular/standalone';
+  IonCardTitle,
+  IonButtons } from '@ionic/angular/standalone';
 import { SagasService } from '../../core/services/sagas.service';
 import { Saga } from '../../core/models/saga.model';
 import { ChangeDetectorRef } from '@angular/core';
@@ -31,7 +32,8 @@ import { RouterLink } from '@angular/router';
     IonCardHeader,
     IonCardTitle,
     IonCol,
-    IonRow ],
+    IonRow,
+    IonButtons ],
   standalone: true,
 })
 export class SagasPage {

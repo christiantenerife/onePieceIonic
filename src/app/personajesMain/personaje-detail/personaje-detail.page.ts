@@ -15,7 +15,7 @@ import {
 
 import { addIcons } from 'ionicons';
 import { heart, heartOutline, arrowBack } from 'ionicons/icons';
-
+import { RouterLink } from '@angular/router';
 import { PersonajesService } from '../../core/services/personajes.service';
 import { Personaje } from '../../core/models/personaje.model';
 import { FavoritesService } from '../../core/services/favorites.service';
@@ -35,6 +35,7 @@ import { FavoritesService } from '../../core/services/favorites.service';
     IonButtons,
     IonIcon,
     IonCard,
+    RouterLink
   ],
 })
 export class PersonajeDetailPage {

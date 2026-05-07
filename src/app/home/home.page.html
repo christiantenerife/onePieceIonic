@@ -1,0 +1,48 @@
+<ion-content class="home-content">
+
+  <section class="hero">
+
+    <img
+      src="assets/onePiece.jpg"
+      class="home-logo"
+      alt="One Piece Logo">
+
+    <h1>Bienvenido al mundo de One Piece</h1>
+
+    <p>
+      Explora personajes, sagas y frutas del diablo.
+    </p>
+
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-gap">
+
+        <ion-col size="12" sizeMd="4">
+          <ion-button
+            expand="block"
+            [routerLink]="['/tabs/personajes']">
+            Personajes
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="12" sizeMd="4">
+          <ion-button
+            expand="block"
+            [routerLink]="['/tabs/frutas']">
+            Frutas
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="12" sizeMd="4">
+          <ion-button
+            expand="block"
+            [routerLink]="['/tabs/sagas']">
+            Sagas
+          </ion-button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+  </section>
+
+</ion-content>
