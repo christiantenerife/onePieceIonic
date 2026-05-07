@@ -11,6 +11,7 @@ import {
   IonRow,
   IonCol,
   IonCardHeader,
+  IonMenuButton,
   IonCardTitle,
   IonSearchbar,
   IonButtons
@@ -41,7 +42,8 @@ import { Personaje } from '../../core/models/personaje.model';
     IonCardHeader,
     IonCardTitle,
     IonSearchbar,
-    IonButtons
+    IonButtons,
+    IonMenuButton,
   ],
 })
 export class PersonajesPage {

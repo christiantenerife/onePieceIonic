@@ -9,6 +9,7 @@ import { IonHeader,
   IonRow,
   IonCol,
   IonCardHeader,
+  IonMenuButton,
   IonCardTitle,
   IonButtons } from '@ionic/angular/standalone';
 import { SagasService } from '../../core/services/sagas.service';
@@ -28,6 +29,7 @@ import { RouterLink } from '@angular/router';
     RouterLink,
     IonText,
     IonGrid,
+    IonMenuButton,
     IonCard,
     IonCardHeader,
     IonCardTitle,

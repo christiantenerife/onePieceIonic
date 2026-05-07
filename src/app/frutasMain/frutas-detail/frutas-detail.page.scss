@@ -2,6 +2,41 @@
 //   --background: #f3ead0;
 // }
 
+.menu-btn {
+  --color: #111827;
+  font-size: 28px;
+}
+
+.logo {
+  height: 60px;
+  width:auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+    transform: translate(-50%, -50%);
+
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.logo-toolbar {
+  --background: #f4e7c5;
+  --min-height: 90px;
+
+  position: relative;
+}
+
+.logo-title {
+  
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: auto;
+  padding: 0;
+}
+
 .detail-card {
   max-width: 420px;
   margin: 30px auto;

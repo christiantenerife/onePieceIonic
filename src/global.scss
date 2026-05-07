@@ -115,3 +115,37 @@ ion-content::part(background) {
   background-color: #ffe066;
 }
 
+.app-menu {
+  --width: 280px;
+}
+
+.menu-toolbar ion-title {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: #111827;
+  text-align: center;
+
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+}
+
+.menu-list {
+  padding: 16px;
+  background: transparent;
+}
+
+.menu-list ion-item {
+  --background: rgba(255, 255, 255, 0.85);
+  --border-radius: 14px;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+
+  margin-bottom: 12px;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.menu-list ion-item:hover {
+  --background: #ffe066;
+}

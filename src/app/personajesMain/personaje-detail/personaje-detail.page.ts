@@ -9,6 +9,7 @@ import {
   IonContent,
   IonButtons,
   IonBackButton,
+  IonMenuButton,
   IonIcon,
   IonCard,
 } from '@ionic/angular/standalone';
@@ -30,6 +31,7 @@ import { FavoritesService } from '../../core/services/favorites.service';
     IonHeader,
     IonToolbar,
     IonTitle,
+    IonMenuButton,
     IonContent,
     IonBackButton,
     IonButtons,

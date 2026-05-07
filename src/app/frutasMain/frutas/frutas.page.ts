@@ -12,6 +12,7 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonButtons,
+  IonMenuButton,
 } from '@ionic/angular/standalone';
 import { FrutasService } from '../../core/services/frutas.service';
 import { Fruta } from '../../core/models/fruta.model';
@@ -35,7 +36,8 @@ import { RouterLink } from '@angular/router';
     IonCardTitle,
     IonCol,
     IonRow,
-    IonButtons  
+    IonButtons,
+    IonMenuButton 
   ],
   standalone: true,
 })

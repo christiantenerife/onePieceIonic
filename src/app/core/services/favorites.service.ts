@@ -20,6 +20,10 @@ export class FavoritesService {
     return `${type}-${id}`;
   }
 
+  getAllFavorites(): string[] {
+  return this.getFavorites();
+}
+
   isFavorite(type: FavoriteType, id: number | string): boolean {
     return this.getFavorites().includes(this.makeId(type, id));
   }

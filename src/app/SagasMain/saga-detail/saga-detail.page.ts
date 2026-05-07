@@ -13,6 +13,7 @@ import {
   IonCard,
   IonButton,
   IonButtons,
+  IonMenuButton,
 } from '@ionic/angular/standalone';
 
 import { SagasService } from '../../core/services/sagas.service';
@@ -36,7 +37,8 @@ import { heart, heartOutline, arrowBack } from 'ionicons/icons';
   IonCard,
   IonButton,
   IonButtons,
-  RouterLink
+  RouterLink,
+  IonMenuButton,
   ],
 })
 export class SagaDetailPage {

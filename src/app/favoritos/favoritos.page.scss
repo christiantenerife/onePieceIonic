@@ -1,0 +1,19 @@
+.info-content::part(background) {
+  background:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    url('/assets/background.jpg');
+
+  background-size: cover;
+  background-position: center;
+}
+
+.page-title {
+  text-align: center;
+  font-family: 'Bangers', cursive;
+  font-size: 3rem;
+  color: white;
+
+  margin-top: 40px;
+
+  text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}

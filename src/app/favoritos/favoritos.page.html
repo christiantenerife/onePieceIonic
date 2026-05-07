@@ -1,0 +1,68 @@
+<ion-header>
+<ion-toolbar class="logo-toolbar">
+<ion-buttons slot="start">
+  <ion-menu-button class="menu-btn"></ion-menu-button>
+</ion-buttons>
+  <ion-title>
+    <img
+      src="assets/onePiece.jpg"
+      class="logo"
+      alt="One Piece Logo"
+       [routerLink]="['/home']">
+  </ion-title>
+
+  <ion-buttons slot="end">
+    <ion-button
+      class="info-button"
+      fill="solid"
+      size="small"
+      shape = "round"
+      color="primary"
+      [routerLink]="['/info']">
+      Sobre
+    </ion-button>
+  </ion-buttons>
+
+</ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+
+    <h1 class="page-title">Favoritos</h1>
+
+ 
+
+  @if (favoritos.length > 0) {
+    <ion-grid class="card-grid">
+  <ion-row>
+
+    @for (favorito of favoritos; track favorito.type + favorito.data.id) {
+  <ion-col size="6">
+    <ion-card class="card">
+
+      <ion-card-header>
+        <ion-card-title>
+          @if (favorito.type === 'personaje') {
+            {{ favorito.data.name }}
+          }
+
+          @if (favorito.type === 'fruta') {
+            {{ favorito.data.name }}
+          }
+
+          @if (favorito.type === 'saga') {
+            {{ favorito.data.title }}
+          }
+        </ion-card-title>
+      </ion-card-header>
+
+    </ion-card>
+  </ion-col>
+}
+  </ion-row>
+</ion-grid>
+  }
+   @else if (favoritos.length === 0) {
+    <p>No tienes favoritos todavía.</p>
+  }
+</ion-content>

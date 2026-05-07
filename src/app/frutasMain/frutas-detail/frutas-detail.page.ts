@@ -11,6 +11,7 @@ import {
   IonButtons,
   IonBackButton,
   IonCard,
+  IonMenuButton,
   IonIcon
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
@@ -35,7 +36,8 @@ import { FavoritesService } from '../../core/services/favorites.service';
     IonBackButton,
     IonCard,
     IonIcon,
-    RouterLink
+    RouterLink,
+    IonMenuButton,
   ],
 })
 export class FrutasDetailPage {
