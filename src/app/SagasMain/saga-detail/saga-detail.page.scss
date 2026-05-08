@@ -45,13 +45,15 @@
   text-align: center;
   position: relative;
    margin-top: 80px;
+
+   animation: detailFadeIn 0.4s ease forwards;
 }
 
 .card--saga-detail:hover {
   background: #ffe066;
 }
 .saga-title {
-  margin-top: 45px;
+  margin-top: 60px;
 }
 ion-back-button {
   position: absolute;
@@ -74,8 +76,8 @@ ion-back-button {
   right: 20px;
   z-index: 10;
 
-  width: 52px;
-  height: 52px;
+  width: 45px;
+  height: 45px;
 
   display: flex;
   justify-content: center;
@@ -113,4 +115,16 @@ ion-back-button {
   transition:
     transform 0.2s ease,
     color 0.2s ease;
+}
+
+@keyframes detailFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

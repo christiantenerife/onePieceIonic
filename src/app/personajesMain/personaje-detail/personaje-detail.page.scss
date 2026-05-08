@@ -8,6 +8,8 @@
    text-align: center;
    position: relative;
    margin-top: 80px;
+
+     animation: detailFadeIn 0.4s ease forwards;
 }
 
 
@@ -114,4 +116,16 @@ ion-back-button {
   transition:
     transform 0.2s ease,
     color 0.2s ease;
+}
+
+@keyframes detailFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

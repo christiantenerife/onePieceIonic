@@ -6,7 +6,8 @@ import { SagasService } from '../core/services/sagas.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { IonHeader,IonGrid, IonCard,IonRow, IonCardHeader,IonTitle, IonCardTitle, IonToolbar, IonButtons, IonMenuButton, IonContent, IonCol, IonSpinner } from '@ionic/angular/standalone';
 
 @Component({
@@ -27,60 +28,97 @@ export class FavoritosPage  {
               private sagasService: SagasService,
   ) {}
 
-  ionViewWillEnter() { //parecido an ngOninit, pero se ejecuta cada vez que se entra a la página, no solo la primera vez que se carga, es ideal para cargar datos que pueden cambiar, como los favoritos
+  ionViewWillEnter() {
+
+  // parecido a ngOnInit, pero se ejecuta cada vez
+  // que se entra a la página
+
   this.loading = true;
   this.error = '';
-  
-    const favoriteIds = this.favoritesService.getAllFavorites(); // obtiene los ids de los favoritos, por ejemplo: ['personaje-1', 'fruta-2', 'saga-3']
 
-  this.favoritos = []; // limpia el array de favoritos para cargar los datos actualizados
+  const favoriteIds = this.favoritesService.getAllFavorites();
 
-  this.personajesService.getPersonajes().subscribe(personajes => { // hace una petición para obtener todos los personajes, y se suscribe a la respuesta, que es un array de personajes, por ejemplo: [{id: 1, name: 'Luffy'}, {id: 2, name: 'Zoro'}, ...]
-    this.frutasService.getFrutas().subscribe(frutas => {
-      this.sagasService.getSagas().subscribe(sagas => {
+  this.favoritos = [];
 
-        favoriteIds.forEach(favorite => { // recorre cada id de favorito, por ejemplo: 'personaje-1'
-          const [type, id] = favorite.split('-');
+  forkJoin({
 
-          if (type === 'personaje') {
-            const personaje = personajes.find(p => p.id === Number(id));
+    personajes: this.personajesService.getPersonajes(),
 
-            if (personaje) {
-              this.favoritos.push({
-                type: 'personaje',
-                data: personaje
-              });
-            }
+    frutas: this.frutasService.getFrutas(),
+
+    sagas: this.sagasService.getSagas()
+
+  }).subscribe({
+
+    next: ({ personajes, frutas, sagas }) => {
+
+      favoriteIds.forEach(favorite => {
+
+        const [type, id] = favorite.split('-');
+
+        if (type === 'personaje') {
+
+          const personaje = personajes.find(
+            p => p.id === Number(id)
+          );
+
+          if (personaje) {
+
+            this.favoritos.push({
+              type: 'personaje',
+              data: personaje
+            });
+
           }
+        }
 
-          if (type === 'fruta') {
-            const fruta = frutas.find(f => f.id === Number(id));
+        if (type === 'fruta') {
 
-            if (fruta) {
-              this.favoritos.push({
-                type: 'fruta',
-                data: fruta
-              });
-            }
+          const fruta = frutas.find(
+            f => f.id === Number(id)
+          );
+
+          if (fruta) {
+
+            this.favoritos.push({
+              type: 'fruta',
+              data: fruta
+            });
+
           }
+        }
 
-          if (type === 'saga') {
-            const saga = sagas.find(s => s.id === Number(id));
+        if (type === 'saga') {
 
-            if (saga) {
-              this.favoritos.push({
-                type: 'saga',
-                data: saga
-              });
-            }
+          const saga = sagas.find(
+            s => s.id === Number(id)
+          );
+
+          if (saga) {
+
+            this.favoritos.push({
+              type: 'saga',
+              data: saga
+            });
+
           }
-        });
-        this.loading = false;
+        }
+
       });
-    });
-    
+
+      this.loading = false;
+
+    },
+
+    error: () => {
+
+      this.error = 'No se pudieron cargar los favoritos.';
+      this.loading = false;
+
+    }
+
   });
-  
+
 }
 
 getFavoriteLink(favorito: any): any[] {
