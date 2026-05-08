@@ -44,6 +44,7 @@ import { heart, heartOutline, arrowBack } from 'ionicons/icons';
 export class SagaDetailPage {
   saga$: Observable<Saga | undefined>;
   isFavorite = false;
+  backHref = '/tabs/sagas';
 
   constructor(
     public sagasService: SagasService,
@@ -51,7 +52,9 @@ export class SagaDetailPage {
     private favoritesService: FavoritesService
   ) {
     addIcons({ heart, heartOutline, arrowBack });
-
+    if (this.route.snapshot.queryParams['from'] === 'favoritos') {
+      this.backHref = '/favoritos';
+    }
     this.saga$ = this.route.paramMap.pipe(
       switchMap(params => {
         const id = Number(params.get('id'));

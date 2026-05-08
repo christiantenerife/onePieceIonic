@@ -43,6 +43,7 @@ import { FavoritesService } from '../../core/services/favorites.service';
 export class PersonajeDetailPage {
   personaje$: Observable<Personaje | undefined>;
   isFavorite = false;
+  backHref = '/tabs/personajes';
 
   constructor(
     public personajesService: PersonajesService,
@@ -50,7 +51,9 @@ export class PersonajeDetailPage {
     private favoritesService: FavoritesService
   ) {
     addIcons({ heart, heartOutline, arrowBack });
-
+    if (this.route.snapshot.queryParams['from'] === 'favoritos') {
+      this.backHref = '/favoritos';
+    }
     this.personaje$ = this.route.paramMap.pipe(
       switchMap(params => {
         const id = Number(params.get('id'));

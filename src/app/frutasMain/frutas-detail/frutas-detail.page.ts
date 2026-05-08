@@ -43,6 +43,7 @@ import { FavoritesService } from '../../core/services/favorites.service';
 export class FrutasDetailPage {
   fruta$: Observable<Fruta | undefined>;
   isFavorite = false;
+  backHref = '/tabs/frutas';
 
   constructor(
     public frutasService: FrutasService,
@@ -50,6 +51,9 @@ export class FrutasDetailPage {
     private favoritesService: FavoritesService
   ) {
     addIcons({ heart, heartOutline, arrowBack });
+    if (this.route.snapshot.queryParams['from'] === 'favoritos') {
+      this.backHref = '/favoritos';
+    }
     this.fruta$ = this.route.paramMap.pipe(
       switchMap(params => {
         const id = Number(params.get('id'));
