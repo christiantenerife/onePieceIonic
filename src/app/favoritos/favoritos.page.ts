@@ -19,21 +19,21 @@ export class FavoritosPage  {
   favoritos: any[] = [];
 
   constructor(private favoritesService: FavoritesService,
-              private personajesService: PersonajesService,
+              private personajesService: PersonajesService, // inyecta el servicio de personajes, me permite hacer peticiones para obtener los personajes favoritos, por ejemplo: this.personajesService.getPersonajes()
               private frutasService: FrutasService,
               private sagasService: SagasService,
   ) {}
 
-  ionViewWillEnter() {
-  const favoriteIds = this.favoritesService.getAllFavorites();
+  ionViewWillEnter() { //parecido an ngOninit, pero se ejecuta cada vez que se entra a la página, no solo la primera vez que se carga, es ideal para cargar datos que pueden cambiar, como los favoritos
+  const favoriteIds = this.favoritesService.getAllFavorites(); // obtiene los ids de los favoritos, por ejemplo: ['personaje-1', 'fruta-2', 'saga-3']
 
-  this.favoritos = [];
+  this.favoritos = []; // limpia el array de favoritos para cargar los datos actualizados
 
-  this.personajesService.getPersonajes().subscribe(personajes => {
+  this.personajesService.getPersonajes().subscribe(personajes => { // hace una petición para obtener todos los personajes, y se suscribe a la respuesta, que es un array de personajes, por ejemplo: [{id: 1, name: 'Luffy'}, {id: 2, name: 'Zoro'}, ...]
     this.frutasService.getFrutas().subscribe(frutas => {
       this.sagasService.getSagas().subscribe(sagas => {
 
-        favoriteIds.forEach(favorite => {
+        favoriteIds.forEach(favorite => { // recorre cada id de favorito, por ejemplo: 'personaje-1'
           const [type, id] = favorite.split('-');
 
           if (type === 'personaje') {
@@ -74,4 +74,21 @@ export class FavoritosPage  {
     });
   });
 }
+
+getFavoriteLink(favorito: any): any[] {
+
+    if (favorito.type === 'personaje') {
+      return ['/tabs/personajes', favorito.data.id];
+    }
+
+    if (favorito.type === 'fruta') {
+      return ['/tabs/frutas', favorito.data.id];
+    }
+
+    if (favorito.type === 'saga') {
+      return ['/tabs/sagas', favorito.data.id];
+    }
+
+    return ['/favoritos'];
+  }
 }
