@@ -60,7 +60,7 @@
 
     @for (favorito of favoritos; track favorito.type + favorito.data.id) {
   <ion-col size="6">
-    <ion-card class="card" [routerLink]="getFavoriteLink(favorito)" button >
+    <ion-card class="card" [routerLink]="getFavoriteLink(favorito)" [queryParams]="{ from: 'favoritos' }" routerDirection="forward" button >
 
       <ion-card-header>
         <ion-card-title>
