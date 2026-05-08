@@ -6,17 +6,19 @@ import { SagasService } from '../core/services/sagas.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { IonHeader,IonGrid, IonCard,IonRow, IonCardHeader,IonTitle, IonCardTitle, IonToolbar, IonButtons, IonMenuButton, IonContent, IonCol } from '@ionic/angular/standalone';
+import { IonHeader,IonGrid, IonCard,IonRow, IonCardHeader,IonTitle, IonCardTitle, IonToolbar, IonButtons, IonMenuButton, IonContent, IonCol, IonSpinner } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-favoritos',
   templateUrl: './favoritos.page.html',
   styleUrls: ['./favoritos.page.scss'],
   standalone: true,
-  imports: [IonCol, IonCard, IonCardHeader, IonCardTitle, IonRow, IonGrid,  IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton, RouterLink, IonContent],
+  imports: [IonSpinner, IonCol, IonCard, IonCardHeader, IonCardTitle, IonRow, IonGrid,  IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton, RouterLink, IonContent],
 })
 export class FavoritosPage  {
   favoritos: any[] = [];
+  loading = true;
+  error = '';
 
   constructor(private favoritesService: FavoritesService,
               private personajesService: PersonajesService, // inyecta el servicio de personajes, me permite hacer peticiones para obtener los personajes favoritos, por ejemplo: this.personajesService.getPersonajes()
@@ -25,7 +27,10 @@ export class FavoritosPage  {
   ) {}
 
   ionViewWillEnter() { //parecido an ngOninit, pero se ejecuta cada vez que se entra a la página, no solo la primera vez que se carga, es ideal para cargar datos que pueden cambiar, como los favoritos
-  const favoriteIds = this.favoritesService.getAllFavorites(); // obtiene los ids de los favoritos, por ejemplo: ['personaje-1', 'fruta-2', 'saga-3']
+  this.loading = true;
+  this.error = '';
+  
+    const favoriteIds = this.favoritesService.getAllFavorites(); // obtiene los ids de los favoritos, por ejemplo: ['personaje-1', 'fruta-2', 'saga-3']
 
   this.favoritos = []; // limpia el array de favoritos para cargar los datos actualizados
 
@@ -69,10 +74,12 @@ export class FavoritosPage  {
             }
           }
         });
-
+        this.loading = false;
       });
     });
+    
   });
+  
 }
 
 getFavoriteLink(favorito: any): any[] {
@@ -91,4 +98,5 @@ getFavoriteLink(favorito: any): any[] {
 
     return ['/favoritos'];
   }
+  
 }

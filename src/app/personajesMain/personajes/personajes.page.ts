@@ -14,8 +14,7 @@ import {
   IonMenuButton,
   IonCardTitle,
   IonSearchbar,
-  IonButtons
-} from '@ionic/angular/standalone';
+  IonButtons, IonSpinner } from '@ionic/angular/standalone';
 
 import { RouterLink } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
@@ -27,7 +26,7 @@ import { Personaje } from '../../core/models/personaje.model';
   templateUrl: 'personajes.page.html',
   styleUrls: ['personajes.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonSpinner, 
     CommonModule,
     RouterLink,
     IonHeader,

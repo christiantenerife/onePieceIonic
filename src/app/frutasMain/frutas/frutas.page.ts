@@ -12,8 +12,7 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonButtons,
-  IonMenuButton,
-} from '@ionic/angular/standalone';
+  IonMenuButton, IonSpinner } from '@ionic/angular/standalone';
 import { FrutasService } from '../../core/services/frutas.service';
 import { Fruta } from '../../core/models/fruta.model';
 import { ChangeDetectorRef } from '@angular/core';
@@ -23,7 +22,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-FrutasPage',
   templateUrl: 'frutas.page.html',
   styleUrls: ['frutas.page.scss'],
-  imports: [IonHeader, 
+  imports: [IonSpinner, IonHeader, 
     IonToolbar, 
     IonTitle, 
     IonContent, 

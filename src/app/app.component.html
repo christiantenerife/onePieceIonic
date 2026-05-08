@@ -9,13 +9,22 @@
 
   <ion-content>
     <ion-list class="menu-list">
-      <ion-item button [routerLink]="['/home']">Inicio</ion-item>
-      <ion-item button [routerLink]="['/tabs/personajes']">Personajes</ion-item>
-      <ion-item button [routerLink]="['/tabs/frutas']">Frutas</ion-item>
-      <ion-item button [routerLink]="['/tabs/sagas']">Sagas</ion-item>
-      <ion-item button [routerLink]="['/favoritos']">Favoritos</ion-item>
-      <ion-item button [routerLink]="['/info']">Sobre</ion-item>
-    </ion-list>
+
+  @for (item of menuItems; track item.path) {
+
+    <ion-menu-toggle auto-hide="false">
+
+      <ion-item
+        button
+        [routerLink]="[item.path]">
+
+        {{ item.title }}
+
+      </ion-item>
+
+    </ion-menu-toggle>
+
+  }</ion-list>
   </ion-content>
 </ion-menu>
 

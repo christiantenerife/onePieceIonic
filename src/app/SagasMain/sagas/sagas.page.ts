@@ -11,7 +11,7 @@ import { IonHeader,
   IonCardHeader,
   IonMenuButton,
   IonCardTitle,
-  IonButtons } from '@ionic/angular/standalone';
+  IonButtons, IonSpinner } from '@ionic/angular/standalone';
 import { SagasService } from '../../core/services/sagas.service';
 import { Saga } from '../../core/models/saga.model';
 import { ChangeDetectorRef } from '@angular/core';
@@ -21,7 +21,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-SagasPage',
   templateUrl: 'sagas.page.html',
   styleUrls: ['sagas.page.scss'],
-  imports: [IonToolbar, 
+  imports: [IonSpinner, IonToolbar, 
     IonTitle, 
     IonContent, 
     IonCard, 

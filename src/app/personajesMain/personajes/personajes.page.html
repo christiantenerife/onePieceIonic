@@ -39,11 +39,25 @@
     <p class="page-subtitle">Descubre los Personajes de OnePiece</p>
   </ion-text>
 
-  @if (loading) {
-    <ion-text>
-      <p class="status-message">Cargando personajes...</p>
-    </ion-text>
-  }
+ @if (loading) {
+
+  <ion-grid class="loading-container">
+
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col size="12" class="ion-text-center">
+
+        <ion-spinner name="crescent"></ion-spinner>
+
+        <p>Cargando personajes...</p>
+
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+}
 
   @if (error) {
     <ion-text color="danger">

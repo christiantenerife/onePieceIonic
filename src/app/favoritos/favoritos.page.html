@@ -30,9 +30,31 @@
 
     <h1 class="page-title">Favoritos</h1>
 
- 
+  @if (loading) {
 
-  @if (favoritos.length > 0) {
+  <ion-grid class="loading-container">
+
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col size="12" class="ion-text-center">
+
+        <ion-spinner name="crescent"></ion-spinner>
+
+        <p>Cargando favoritos...</p>
+
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+}
+
+   @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  @if (!loading &&favoritos.length > 0) {
     <ion-grid class="card-grid">
   <ion-row>
 
@@ -62,7 +84,25 @@
   </ion-row>
 </ion-grid>
   }
-   @else if (favoritos.length === 0) {
-    <p>No tienes favoritos todavía.</p>
-  }
+  @if (!loading && favoritos.length === 0) {
+
+  <ion-grid class="empty-state">
+
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col size="12" class="ion-text-center">
+
+        <h2>No tienes favoritos todavía</h2>
+
+        <p>
+          Marca personajes, frutas o sagas para verlos aquí.
+        </p>
+
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+}
 </ion-content>

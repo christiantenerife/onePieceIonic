@@ -35,10 +35,24 @@
   </ion-text>
 
   @if (loading) {
-    <ion-text>
-      <p class="status-message">Cargando sagas...</p>
-    </ion-text>
-  }
+
+  <ion-grid class="loading-container">
+
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col size="12" class="ion-text-center">
+
+        <ion-spinner name="crescent"></ion-spinner>
+
+        <p>Cargando sagas...</p>
+
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+}
 
   @if (error) {
     <ion-text color="danger">
